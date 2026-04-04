@@ -1,7 +1,6 @@
 import { beforeEach, describe, test, expect } from "vitest";
 
 import { Board } from "../src/Board";
-import { normalize } from "./testing";
 
 describe("Falling blocks", () => {
   let board: Board;
@@ -79,7 +78,7 @@ describe("Falling blocks", () => {
          .X.
          ...`
       );
-      expect(board.hasFalling(), "the player should still be able to move the block").to.be.true;
+      expect(board.hasFalling(), "the player should still be able to move the block").toBeTruthy();
     });
 
     test("it stops when it hits the bottom", () => {
@@ -90,8 +89,8 @@ describe("Falling blocks", () => {
          ...
          .X.`
       );
-      expect(board.currentFallingBlock).to.be.null;
-      expect(board.hasFalling(), "the block should stop moving").to.be.false;
+      expect(board.currentFallingBlock).toBeNull();
+      expect(board.hasFalling(), "the block should stop moving").toBeFalsy();
     });
   });
 
@@ -110,7 +109,7 @@ describe("Falling blocks", () => {
          .Y.
          .X.`
       );
-      expect(board.hasFalling(), "the player should still be able to move the block").to.be.true;
+      expect(board.hasFalling(), "the player should still be able to move the block").toBeTruthy();
     });
 
     test("it stops when it hits the other block", () => {
@@ -121,7 +120,7 @@ describe("Falling blocks", () => {
          .Y.
          .X.`
       );
-      expect(board.hasFalling(), "the block should stop moving").to.be.false;
+      expect(board.hasFalling(), "the block should stop moving").toBeFalsy();
     });
   });
 });
