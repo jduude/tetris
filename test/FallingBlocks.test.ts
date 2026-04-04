@@ -15,6 +15,10 @@ describe("Falling blocks", () => {
        ...`);
   });
 
+  test("can not tick before block is dropped", () => {
+    expect(() => board.tick()).to.throw("no block to tick");
+  });
+
   describe("When a block is dropped", () => {
     beforeEach(() => {
       board.drop("X");
@@ -30,7 +34,6 @@ describe("Falling blocks", () => {
 
     test("it moves down one row per tick", () => {
       board.tick();
-
       expect(board.toString()).to.equalShape(
         `...
          .X.
