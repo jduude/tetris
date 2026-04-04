@@ -88,6 +88,7 @@ describe("Falling blocks", () => {
          ...
          .X.`
       );
+      expect(board.currentFallingBlock).to.be.null;
       expect(board.hasFalling(), "the block should stop moving").to.be.false;
     });
   });

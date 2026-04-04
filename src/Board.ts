@@ -35,7 +35,13 @@ export class Board {
     const currentRow = this.state.findIndex((row) => row.includes(this.currentFallingBlock!));
     if (currentRow < this.state.length) {
       this.state[currentRow][1] = ".";
-      this.state[currentRow + 1][1] = this.currentFallingBlock!;
+      const nextRow = currentRow + 1;
+      this.state[nextRow][1] = this.currentFallingBlock!;
+      if (nextRow >= this.state.length - 1) {
+        this.currentFallingBlock = null;
+      }
+    } else {
+      this.currentFallingBlock = null;
     }
   }
   hasFalling(): boolean {
