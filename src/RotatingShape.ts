@@ -19,6 +19,11 @@ export class RotatingShape {
     return new RotatingShape(newShape);
   }
 
+  rotateLeft(): RotatingShape {
+    const newShape = this.shape[0].map((_, colIndex) => this.shape.map((row) => row[colIndex])).reverse();
+    return new RotatingShape(newShape);
+  }
+
   toString(): string {
     return this.shape.map((row) => row.join("")).join("\n") + "\n";
   }
