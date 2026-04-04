@@ -1,5 +1,5 @@
-import { beforeEach, describe, test ,expect} from "vitest";
- 
+import { beforeEach, describe, test, expect } from "vitest";
+
 import { Board } from "../src/Board";
 import { normalize } from "./testing";
 
@@ -10,12 +10,11 @@ describe("Falling blocks", () => {
   });
 
   test("The board starts empty", () => {
-    expect(board.toString()).to.equalShape(  `...
+    expect(board.toString()).to.equalShape(`...
        ...
        ...`);
   });
 
-  /*
   describe("When a block is dropped", () => {
     beforeEach(() => {
       board.drop("X");
@@ -28,7 +27,7 @@ describe("Falling blocks", () => {
          ...`
       );
     });
-
+    /*
     test.skip("it moves down one row per tick", () => {
       board.tick();
 
@@ -45,8 +44,7 @@ describe("Falling blocks", () => {
       const after = board.toString();
       expect(after).to.equal(before);
     });  */
-/*   }); */
-
+  });
 
   /*
   describe("When a block reaches the bottom", () => {

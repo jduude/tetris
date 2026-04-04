@@ -15,6 +15,10 @@ export class Board {
       );
   }
 
+  drop(block: string) {
+    this.state[0][1] = block;
+  }
+
   toString() {
     return this.state.map((row) => row.join("")).join("\n") + "\n";
   }
