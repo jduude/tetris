@@ -1,8 +1,8 @@
 export class RotatingShape {
-  shape: string[][];
+  readonly shape: readonly (readonly string[])[];
 
   constructor(shape: string[][]) {
-    this.shape = shape;
+    this.shape = shape.map((row) => [...row]);
   }
 
   static fromString(s: string): RotatingShape {
