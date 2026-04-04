@@ -19,6 +19,11 @@ export class Board {
     this.state[0][1] = block;
   }
 
+  tick() {
+    this.state[0][1] = ".";
+    this.state[1][1] = "X";
+  }
+
   toString() {
     return this.state.map((row) => row.join("")).join("\n") + "\n";
   }

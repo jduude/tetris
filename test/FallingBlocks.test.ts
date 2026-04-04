@@ -27,8 +27,8 @@ describe("Falling blocks", () => {
          ...`
       );
     });
-    /*
-    test.skip("it moves down one row per tick", () => {
+
+    test("it moves down one row per tick", () => {
       board.tick();
 
       expect(board.toString()).to.equalShape(
@@ -37,7 +37,7 @@ describe("Falling blocks", () => {
          ...`
       );
     });
-
+    /*
     test.skip("at most one block may be falling at a time", () => {
       const before = board.toString();
       expect(() => board.drop("Y")).to.throw("already falling");
