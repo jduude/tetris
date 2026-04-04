@@ -31,13 +31,20 @@ export class Board {
     if (!this.currentFallingBlock) {
       return;
     }
-
+    const column = 1; // dummy temp column for now
     const currentRow = this.state.findIndex((row) => row.includes(this.currentFallingBlock!));
     const nextRow = currentRow + 1;
-    if (currentRow < this.state.length) {
-      this.state[currentRow][1] = ".";
 
-      this.state[nextRow][1] = this.currentFallingBlock!;
+    const nextRowHasBlock = this.state[nextRow][column] !== ".";
+    if (nextRowHasBlock) {
+      this.currentFallingBlock = null;
+      return;
+    }
+
+    if (currentRow < this.state.length) {
+      this.state[currentRow][column] = ".";
+
+      this.state[nextRow][column] = this.currentFallingBlock!;
       if (nextRow >= this.state.length - 1) {
         this.currentFallingBlock = null;
       }
