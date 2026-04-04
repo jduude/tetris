@@ -1,13 +1,14 @@
-export class Tetromino {
+import { RotatingShape } from "./RotatingShape";
+
+export class Tetromino extends RotatingShape {
   static T_SHAPE = new Tetromino([
     [".", "T", "."],
     ["T", "T", "T"],
     [".", ".", "."],
   ]);
-  private shape: string[][];
 
   constructor(shape: string[][]) {
-    this.shape = shape;
+    super(shape);
   }
 
   toString(): string {
