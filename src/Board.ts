@@ -3,10 +3,12 @@ export class Board {
   height: number;
   initialState: string[][];
   state: string[][];
+  currentFallingBlock: string | null = null;
 
   constructor(width: number, height: number) {
     this.width = width;
     this.height = height;
+    this.currentFallingBlock = null;
     this.initialState = Array(this.height)
       .fill(null)
       .map(() =>
@@ -18,16 +20,16 @@ export class Board {
   }
 
   drop(block: string) {
-    const existingFallingBlock = this.state.find((row) => row.find((cell) => cell !== "."));
-    if (existingFallingBlock) {
+    if (this.currentFallingBlock) {
       throw new Error("already falling");
     }
+    this.currentFallingBlock = block;
     this.state[0][1] = block;
   }
 
   tick() {
     this.state[0][1] = ".";
-    this.state[1][1] = "X";
+    this.state[1][1] = this.currentFallingBlock!;
   }
 
   toString() {
