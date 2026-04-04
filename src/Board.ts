@@ -31,8 +31,10 @@ export class Board {
     if (!this.currentFallingBlock) {
       throw new Error("no block to tick");
     }
-    this.state[0][1] = ".";
-    this.state[1][1] = this.currentFallingBlock!;
+
+    const currentRow = this.state.findIndex((row) => row.includes(this.currentFallingBlock!));
+    this.state[currentRow][1] = ".";
+    this.state[currentRow + 1][1] = this.currentFallingBlock!;
   }
 
   toString() {

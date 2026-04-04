@@ -41,6 +41,16 @@ describe("Falling blocks", () => {
       );
     });
 
+    test("it moves down two rows with 2 ticks", () => {
+      board.tick();
+      board.tick();
+      expect(board.toString()).to.equalShape(
+        `...
+         ...
+         .X.`
+      );
+    });
+
     test("at most one block may be falling at a time", () => {
       const before = board.toString();
       expect(board.toString()).to.equalShape(
