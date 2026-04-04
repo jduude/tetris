@@ -10,8 +10,7 @@ describe("Falling blocks", () => {
   });
 
   test("The board starts empty", () => {
-    console.log(board.toString());
-    expect(normalize(board.toString())).to.equalShape(  `...
+    expect(board.toString()).to.equalShape(  `...
        ...
        ...`);
   });
@@ -45,9 +44,9 @@ describe("Falling blocks", () => {
       expect(() => board.drop("Y")).to.throw("already falling");
       const after = board.toString();
       expect(after).to.equal(before);
-    });
-  });
-  */
+    });  */
+/*   }); */
+
 
   /*
   describe("When a block reaches the bottom", () => {
