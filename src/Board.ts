@@ -38,7 +38,12 @@ export class Board {
       this.state[currentRow + 1][1] = this.currentFallingBlock!;
     }
   }
-
+  hasFalling(): boolean {
+    return (
+      this.currentFallingBlock !== null &&
+      this.state.slice(0, this.state.length - 1).some((row) => row.includes(this.currentFallingBlock!))
+    );
+  }
   toString() {
     return this.state.map((row) => row.join("")).join("\n") + "\n";
   }
