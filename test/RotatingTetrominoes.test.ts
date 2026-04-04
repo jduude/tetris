@@ -2,10 +2,16 @@ import { describe, test, expect } from "vitest";
 
 import { Tetromino } from "../src/Tetromino";
 
-function distinctOrientations(shape) {
-  const distinct = new Set();
-  let goingRight = shape;
-  let goingLeft = shape;
+interface Rotatable {
+  rotateRight(): Rotatable;
+  rotateLeft(): Rotatable;
+  toString(): string;
+}
+
+function distinctOrientations(shape: Rotatable): Set<string> {
+  const distinct = new Set<string>();
+  let goingRight: Rotatable = shape;
+  let goingLeft: Rotatable = shape;
   for (let i = 0; i < 10; i++) {
     distinct.add(goingRight.toString());
     goingRight = goingRight.rotateRight();
@@ -34,7 +40,7 @@ describe("The T shape", () => {
     );
   });
 
-  test.skip("can be rotated left/counter-clockwise", () => {
+  test("can be rotated left/counter-clockwise", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
       `.T.
        TT.
@@ -42,7 +48,7 @@ describe("The T shape", () => {
     );
   });
 
-  test.skip("has 4 distinct orientations", () => {
+  test("has 4 distinct orientations", () => {
     expect(distinctOrientations(shape).size).to.equal(4);
   });
 });
