@@ -100,7 +100,6 @@ describe("Falling blocks", () => {
       board.drop("X");
       board.tick();
       board.tick();
-      board.tick();
       board.drop("Y");
       board.tick();
     });
