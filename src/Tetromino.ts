@@ -7,6 +7,14 @@ export class Tetromino extends RotatingShape {
     [".", ".", "."],
   ]);
 
+  static I_SHAPE = new Tetromino([
+    [".", ".", ".", ".", "."],
+    [".", ".", ".", ".", "."],
+    ["I", "I", "I", "I", "."],
+    [".", ".", ".", ".", "."],
+    [".", ".", ".", ".", "."],
+  ]);
+
   constructor(shape: string[][]) {
     super(shape);
   }
