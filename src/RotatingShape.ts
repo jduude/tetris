@@ -1,12 +1,15 @@
-import type { TetrominoShapeName } from "./types";
+import { I_SHAPE_ROTATED_0_2, I_SHAPE_ROTATED_1_3 } from "./tetrminoShapes";
+import type { RotationState, TetrominoShapeName } from "./types";
 
 export class RotatingShape {
   readonly shape: readonly (readonly string[])[];
   readonly name: TetrominoShapeName;
+  readonly rotationState: RotationState;
 
-  constructor(shape: string[][], name: TetrominoShapeName = "unnamed") {
+  constructor(shape: string[][], name: TetrominoShapeName = "unnamed", rotationState: RotationState = 0) {
     this.shape = shape.map((row) => [...row]);
     this.name = name;
+    this.rotationState = rotationState;
   }
 
   static fromString(s: string, name: TetrominoShapeName = "unnamed"): RotatingShape {
@@ -19,13 +22,24 @@ export class RotatingShape {
   }
 
   rotateRight(): RotatingShape {
+    if (this.name === "Ishape" && this.rotationState % 2 === 1) {
+      const newShape = I_SHAPE_ROTATED_0_2.map((row) => [...row]);
+      return new RotatingShape(newShape, this.name, ((this.rotationState + 3) % 4) as RotationState);
+    }
+
     const newShape = this.shape[0].map((_, colIndex) => this.shape.map((row) => row[colIndex]).reverse());
-    return new RotatingShape(newShape, this.name);
+    return new RotatingShape(newShape, this.name, ((this.rotationState + 1) % 4) as RotationState);
   }
 
   rotateLeft(): RotatingShape {
+    if (this.name === "Ishape" && this.rotationState % 2 === 0) {
+      const newShape = I_SHAPE_ROTATED_1_3.map((row) => [...row]);
+      return new RotatingShape(newShape, this.name, ((this.rotationState + 3) % 4) as RotationState);
+    }
+
     const newShape = this.shape[0].map((_, colIndex) => this.shape.map((row) => row[colIndex])).reverse();
-    return new RotatingShape(newShape, this.name);
+
+    return new RotatingShape(newShape, this.name, ((this.rotationState + 3) % 4) as RotationState);
   }
 
   toString(): string {

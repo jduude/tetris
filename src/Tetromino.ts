@@ -1,4 +1,5 @@
 import { RotatingShape } from "./RotatingShape";
+import { I_SHAPE_ROTATED_0_2 } from "./tetrminoShapes";
 import type { TetrominoShapeName } from "./types";
 
 export class Tetromino extends RotatingShape {
@@ -11,16 +12,7 @@ export class Tetromino extends RotatingShape {
     "Tshape"
   );
 
-  static I_SHAPE = new Tetromino(
-    [
-      [".", ".", ".", ".", "."],
-      [".", ".", ".", ".", "."],
-      ["I", "I", "I", "I", "."],
-      [".", ".", ".", ".", "."],
-      [".", ".", ".", ".", "."],
-    ],
-    "Ishape"
-  );
+  static I_SHAPE = new Tetromino(I_SHAPE_ROTATED_0_2, "Ishape");
 
   constructor(shape: string[][], name: TetrominoShapeName = "unnamed") {
     super(shape, name);
