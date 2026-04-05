@@ -11,6 +11,14 @@ export class Tetromino extends RotatingShape {
     ],
     "Tshape"
   );
+  static O_SHAPE = new Tetromino(
+    [
+      [".", "O", "O"],
+      [".", "O", "O"],
+      [".", ".", "."],
+    ],
+    "Oshape"
+  );
 
   static I_SHAPE = new Tetromino(I_SHAPE_ROTATED_0_2, "Ishape");
 
