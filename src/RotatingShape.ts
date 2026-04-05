@@ -40,6 +40,12 @@ export class RotatingShape {
     if (this.name === "Ishape" && this.rotationState % 2 === 0) {
       const newShape = I_SHAPE_ROTATED_1_3.map((row) => [...row]);
       return new RotatingShape(newShape, this.name, ((this.rotationState + 3) % 4) as RotationState);
+    } else if (this.name === "Oshape") {
+      return new RotatingShape(
+        this.shape.map((row) => [...row]),
+        this.name,
+        0
+      );
     }
 
     const newShape = this.shape[0].map((_, colIndex) => this.shape.map((row) => row[colIndex])).reverse();
