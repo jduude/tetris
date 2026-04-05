@@ -1,32 +1,45 @@
 import { RotatingShape } from "./RotatingShape";
 import { I_SHAPE_ROTATED_0_2 } from "./tetrminoShapes";
-import type { TetrominoShapeName } from "./types";
 
-export class Tetromino extends RotatingShape {
+export class Tetromino {
+  private readonly rotatingShape: RotatingShape;
+
   static T_SHAPE = new Tetromino(
-    [
-      [".", "T", "."],
-      ["T", "T", "T"],
-      [".", ".", "."],
-    ],
-    "Tshape"
+    new RotatingShape(
+      [
+        [".", "T", "."],
+        ["T", "T", "T"],
+        [".", ".", "."],
+      ],
+      "Tshape"
+    )
   );
   static O_SHAPE = new Tetromino(
-    [
-      [".", "O", "O"],
-      [".", "O", "O"],
-      [".", ".", "."],
-    ],
-    "Oshape"
+    new RotatingShape(
+      [
+        [".", "O", "O"],
+        [".", "O", "O"],
+        [".", ".", "."],
+      ],
+      "Oshape"
+    )
   );
 
-  static I_SHAPE = new Tetromino(I_SHAPE_ROTATED_0_2, "Ishape");
+  static I_SHAPE = new Tetromino(new RotatingShape(I_SHAPE_ROTATED_0_2, "Ishape"));
 
-  constructor(shape: string[][], name: TetrominoShapeName = "unnamed") {
-    super(shape, name);
+  private constructor(rotatingShape: RotatingShape) {
+    this.rotatingShape = rotatingShape;
+  }
+
+  rotateRight(): Tetromino {
+    return new Tetromino(this.rotatingShape.rotateRight());
+  }
+
+  rotateLeft(): Tetromino {
+    return new Tetromino(this.rotatingShape.rotateLeft());
   }
 
   toString(): string {
-    return this.shape.map((row) => row.join("")).join("\n") + "\n";
+    return this.rotatingShape.toString();
   }
 }
